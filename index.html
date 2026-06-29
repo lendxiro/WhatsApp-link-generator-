@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate WhatsApp links & QR codes instantly — free, private, no sign-up." />
+  <title>WALink — WhatsApp Link & QR Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Adsterra Social Bar (floats automatically on page) -->
+  <script src="https://pl30118177.effectivecpmnetwork.com/b6/71/2c/b6712c37bf754b4883b31e9dba497484.js"></script>
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Floating bubbles (decorative) -->
+  <div class="bubbles" aria-hidden="true">
+    <div class="bubble b1">💬</div>
+    <div class="bubble b2">📱</div>
+    <div class="bubble b3">🔗</div>
+    <div class="bubble b4">✨</div>
+    <div class="bubble b5">📲</div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="logo-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="10" fill="url(#logoGrad)"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+              <stop offset="0%" stop-color="#25D366"/>
+              <stop offset="100%" stop-color="#06d6a0"/>
+            </linearGradient>
+          </defs>
+          <path d="M18 7C11.925 7 7 11.925 7 18c0 2.115.585 4.095 1.605 5.79L7 29l5.46-1.575A10.92 10.92 0 0 0 18 29c6.075 0 11-4.925 11-11S24.075 7 18 7Z" fill="white" fill-opacity=".25"/>
+          <path d="M23.5 21.174c-.302-.151-1.79-.883-2.067-.983-.277-.1-.478-.15-.679.15-.2.302-.779.983-.955 1.184-.176.2-.352.226-.654.075-.302-.15-1.277-.47-2.433-1.502-.9-.803-1.508-1.795-1.685-2.097-.176-.301-.019-.464.133-.614.136-.136.302-.352.453-.528.15-.175.2-.301.301-.503.1-.2.05-.376-.025-.527-.076-.15-.679-1.634-.929-2.237-.245-.587-.493-.508-.679-.517l-.578-.01c-.2 0-.527.075-.804.376-.277.302-1.057 1.032-1.057 2.516s1.082 2.919 1.232 3.12c.15.2 2.13 3.251 5.162 4.558.72.311 1.283.497 1.722.637.723.23 1.382.197 1.903.12.58-.087 1.789-.731 2.04-1.436.252-.705.252-1.31.177-1.435-.076-.126-.277-.201-.578-.352Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <span class="site-name">WALink</span>
+        <span class="site-pill">Free &amp; Private</span>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span class="pulse-dot"></span>
+        Instant WhatsApp Generator
+      </div>
+      <h1 class="hero-title">
+        Create your link<br/>
+        <span class="hero-gradient">in seconds</span>
+      </h1>
+      <p class="hero-sub">No sign-up. No data sent anywhere. Just paste &amp; share.</p>
+    </section>
+
+    <!-- Adsterra Banner 468x60 — above card -->
+    <div class="ad-slot ad-banner">
+      <script>
+        atOptions = {
+          'key' : '995a192773cb8741553622147e2986fa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/995a192773cb8741553622147e2986fa/invoke.js"></script>
+    </div>
+
+    <!-- Main card -->
+    <div class="card">
+
+      <!-- Step 1: Form -->
+      <div class="card-section" id="form-section">
+        <div class="step-badge">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.545 3.13L12 4.635l-2.5 2.435.59 3.44L7 8.885l-3.09 1.625.59-3.44L2 4.635l3.455-.505L7 1Z" fill="currentColor"/></svg>
+          Enter details
+        </div>
+
+        <div class="form-grid">
+          <!-- Country -->
+          <div class="field-wrap field-country">
+            <label class="field-label" for="country-code">Country</label>
+            <div class="custom-select-wrap">
+              <select id="country-code"><!-- JS fills this --></select>
+              <span class="select-caret">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="field-wrap field-phone">
+            <label class="field-label" for="phone-number">Phone number</label>
+            <div class="phone-field">
+              <div class="dial-badge" id="dial-badge">+1</div>
+              <input
+                type="tel"
+                id="phone-number"
+                placeholder="e.g. 415 555 0100"
+                autocomplete="tel-national"
+                inputmode="tel"
+              />
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="field-wrap field-message">
+            <label class="field-label" for="message">
+              Pre-filled message
+              <span class="optional-tag">optional</span>
+            </label>
+            <div class="textarea-wrap">
+              <textarea id="message" rows="3" placeholder="Hi! I saw your profile and wanted to reach out…"></textarea>
+              <span class="char-pill" id="char-pill">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="error-box" id="error-box" hidden>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v4M8 11h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span id="error-msg">Please enter a valid phone number.</span>
+        </div>
+
+        <!-- CTA -->
+        <button class="generate-btn" id="generate-btn" type="button">
+          <span class="btn-ripple"></span>
+          <span class="btn-text">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="6" rx="1.5" stroke="white" stroke-width="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5" stroke="white" stroke-width="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5" stroke="white" stroke-width="1.5"/><path d="M11 14h6M14 11v6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Generate Link &amp; QR Code
+          </span>
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="card-divider" id="card-divider" hidden>
+        <div class="divider-track">
+          <span class="divider-label">Your result</span>
+        </div>
+      </div>
+
+      <!-- Step 2: Result -->
+      <div class="result-section" id="result-section" hidden>
+
+        <div class="result-inner">
+          <!-- Link box -->
+          <div class="link-card" id="link-card">
+            <div class="link-card-label">WhatsApp Link</div>
+            <div class="link-card-body">
+              <span class="link-value" id="link-value"></span>
+              <button class="copy-icon-btn" id="copy-icon-btn" type="button" aria-label="Copy link" title="Copy link">
+                <svg id="copy-svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="6" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- QR -->
+          <div class="qr-reveal" id="qr-reveal">
+            <div class="qr-halo"></div>
+            <div class="qr-frame">
+              <div class="qr-corner tl"></div>
+              <div class="qr-corner tr"></div>
+              <div class="qr-corner bl"></div>
+              <div class="qr-corner br"></div>
+              <div id="qr-canvas" class="qr-canvas" role="img" aria-label="QR code"></div>
+            </div>
+            <p class="qr-hint">Scan with any camera to open WhatsApp</p>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions-row">
+            <button class="action-btn action-copy" id="copy-btn" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              Copy Link
+            </button>
+            <button class="action-btn action-open" id="open-btn" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 1 0 3.836 10.8l2.164.6-.6-2.164A6 6 0 0 0 8 2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8c0 1.8 2.5 3 3.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Open WhatsApp
+            </button>
+            <button class="action-btn action-dl" id="download-btn" type="button">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              Save QR
+            </button>
+          </div>
+        </div>
+
+        <!-- Reset -->
+        <button class="reset-btn" id="reset-btn" type="button">
+          ← Generate a new link
+        </button>
+      </div>
+
+    </div><!-- /.card -->
+
+    <!-- Adsterra Native Banner — below card -->
+    <div class="ad-slot ad-native">
+      <script async="async" data-cfasync="false" src="https://pl30118174.effectivecpmnetwork.com/5a0056ca5e910e02346a231d8da96870/invoke.js"></script>
+      <div id="container-5a0056ca5e910e02346a231d8da96870"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4.5v3.5M7 10h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Everything runs in your browser — zero data leaves your device.
+    </footer>
+
+  </div><!-- /.page-wrap -->
+
+  <!-- Toast -->
+  <div class="toast-wrap" id="toast-wrap" aria-live="polite">
+    <div class="toast" id="toast">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="toast-msg">Copied!</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
